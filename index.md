@@ -7,5 +7,6 @@ related to pedestrian heat relief using stoplight-mounted shade structures.
 
 ## Sections
 - [Academic Literature](sources/)
+- [Civil Projects](sources/)
 - [Summary Tables](tables/)
 - [Integrative Narrative Draft](drafts/integrative-lit-review.md)
