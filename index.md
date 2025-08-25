@@ -1,4 +1,5 @@
 # Stoplight-Mounted Shade Structures: Literature & Precedents
+
 ### Return to [GitHub Repo](https://github.com/robert-z-lehr/Literature-Review).
 
 This site catalogs academic literature, city initiatives, and precedents 
