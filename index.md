@@ -9,3 +9,4 @@ related to pedestrian heat relief using stoplight-mounted shade structures.
 - [Academic Literature](sources/)
 - [Summary Tables](tables/)
 - [Integrative Narrative Draft](drafts/integrative-lit-review.md)
+- Placeholder... Return to [GitHub Repo](https://github.com/robert-z-lehr/Literature-Review)
