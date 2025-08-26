@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Shade Structures – Literature Review</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Marked: Markdown -> HTML -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    :root {
+      /* Warm burnt-orange inspired (not UT exact) */
+      --bg: #FFF7F1;        /* page background: light warm */
+      --fg: #2A1E1A;        /* main text: deep brown */
+      --muted: #6E5247;     /* secondary text */
+      --accent: #9B5330;    /* headings/emphasis */
+      --tab: #FCE6D9;       /* inactive tabs */
+      --tab-active: #F8D7C2;/* active tab */
+      --border: #EAC7B4;    /* borders */
+      --link: #8A3E22;      /* links */
+      --maxw: 1050px;
+    }
+
+    html, body {
+      margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height: 1.55;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      max-width: var(--maxw);
+      margin: 28px auto 48px auto;
+      padding: 0 16px;
+    }
+    header h1 {
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      margin: 0 0 4px 0;
+      letter-spacing: .2px;
+      color: var(--accent);
+    }
+    header p {
+      margin: 4px 0 12px 0; color: var(--muted);
+    }
+    .repo-link {
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px; margin-bottom: 18px;
+    }
+    .tab {
+      display: inline-flex; align-items: center;
+      padding: 8px 12px; border: 1px solid var(--border);
+      border-bottom: none;
+      background: var(--tab);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      cursor: pointer; user-select: none;
+      font-size: 0.95rem;
+    }
+    .tab[aria-selected="true"] {
+      background: var(--tab-active);
+      font-weight: 600;
+    }
+    .panel {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      min-height: 200px;
+      background: transparent;
+    }
+    .loading, .error {
+      padding: 12px 0; color: var(--muted);
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.95rem;
+      white-space: pre-wrap;
+    }
+
+    /* Rendered Markdown tweaks */
+    .panel :is(h1,h2,h3) { margin-top: 1.25em; color: var(--accent); }
+    .panel h1 { font-size: 1.5rem; }
+    .panel h2 { font-size: 1.25rem; }
+    .panel h3 { font-size: 1.05rem; }
+    .panel code { background: rgba(125,125,125,.12); padding: 0 .25em; border-radius: 4px; }
+    .panel pre { overflow-x: auto; padding: 12px; border: 1px solid var(--border); border-radius: 8px; }
+    .panel table { border-collapse: collapse; width: 100%; }
+    .panel th, .panel td { border: 1px solid var(--border); padding: 8px; text-align: left; }
+    .panel blockquote { border-left: 3px solid var(--border); padding-left: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Stoplight-Mounted Shade Structures — Literature & Precedents</h1>
+      <p>Tabs: integrative narrative and individual source reviews. Click a tab to load the corresponding Markdown file from this repository.</p>
+      <p class="repo-link">
+        <a href="https://github.com/robert-z-lehr/Literature-Review/tree/main" target="_blank" rel="noopener">View on GitHub Repository</a>
+      </p>
+    </header>
+
+    <!-- TAB BAR -->
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Literature review tabs">
+      <!-- Tabs are injected by JS -->
+    </nav>
+
+    <!-- CONTENT PANEL -->
+    <section class="panel" id="panel" role="tabpanel" tabindex="0" aria-live="polite">
+      <div class="loading">Loading…</div>
+    </section>
+  </div>
+
+  <script>
+    // ---- Configure your tabs here ----
+    const TABS = [
+      { label: "Integrative Narrative", path: "drafts/integrative-literature-review.md" },
+      { label: "Thermal Exposure — Key Sources", path: "sources/Thermal_Exposure_Key_Sources.md" },
+      { label: "Equity & Accessibility", path: "sources/Equity_Accessibility.md" },
+      { label: "Behavioral Responses", path: "sources/Behavioral_Responses.md" },
+      { label: "Feasibility & Precedents", path: "sources/Feasibility_Precedents.md" },
+      { label: "Niyogi 2019 (Austin Heat Mapping)", path: "sources/Niyogi_2019_AustinHeatMapping.md" }
+    ];
+
+    // Utility: get repo base path (works on GH Pages under /<repo>/)
+    const basePath = (() => {
+      const parts = window.location.pathname.split("/").filter(Boolean);
+      if (parts.length >= 1) {
+        return "/" + parts[0] + "/";
+      }
+      return "/";
+    })();
+
+    const tabsEl = document.getElementById("tabs");
+    const panelEl = document.getElementById("panel");
+
+    function renderTabs() {
+      tabsEl.innerHTML = "";
+      TABS.forEach((t, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "tab";
+        btn.type = "button";
+        btn.setAttribute("role", "tab");
+        btn.setAttribute("aria-selected", idx === 0 ? "true" : "false");
+        btn.setAttribute("aria-controls", "panel");
+        btn.id = "tab-" + idx;
+        btn.textContent = t.label;
+        btn.addEventListener("click", () => activateTab(idx));
+        tabsEl.appendChild(btn);
+      });
+    }
+
+    async function fetchMarkdown(path) {
+      const url = basePath + path;
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status} — ${url}`);
+      return res.text();
+    }
+
+    async function activateTab(idx) {
+      [...tabsEl.children].forEach((el, i) => {
+        el.setAttribute("aria-selected", i === idx ? "true" : "false");
+      });
+      panelEl.innerHTML = '<div class="loading">Loading…</div>';
+      const mdPath = TABS[idx].path;
+
+      try {
+        const md = await fetchMarkdown(mdPath);
+        panelEl.innerHTML = marked.parse(md);
+        panelEl.focus({ preventScroll: true });
+      } catch (err) {
+        panelEl.innerHTML = `<div class="error">Could not load: ${mdPath}\n${err.message}</div>`;
+      }
+    }
+
+    // Init
+    renderTabs();
+    activateTab(0);
+  </script>
+</body>
+</html>
