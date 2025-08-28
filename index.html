@@ -145,7 +145,7 @@
     }
 
     /* Rendered Markdown tweaks */
-    .panel :is(h1,h2,h3) { margin-top: 1.25em; color: var(--accent); }
+    .panel :is(h1,h2,h3,h4) { margin-top: 1.25em; color: var(--accent); }
     .panel h1 { font-size: 1.5rem; }
     .panel h2 { font-size: 1.25rem; }
     .panel h3 { font-size: 1.05rem; }
@@ -154,17 +154,28 @@
     .panel table { border-collapse: collapse; width: 100%; }
     .panel th, .panel td { border: 1px solid var(--border); padding: 8px; text-align: left; }
     .panel blockquote { border-left: 3px solid var(--border); padding-left: 12px; color: var(--muted); }
+
+    /* Small helpers for the Overview tab */
+    .hero { display: grid; gap: 6px; margin-bottom: 10px; }
+    .meta { color: var(--muted); font-size: 0.95rem; }
+    .toc { margin: .5rem 0 1rem 0; padding-left: 1.2rem; }
+    .kv { display: grid; gap: 8px; }
+    .kv p { margin: 0; }
+    .callout {
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px; background: #fff8f4;
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <h1>Stoplight-Mounted Shade Structures — Literature & Precedents</h1>
-      <p>Tabs: integrative narrative and individual source reviews. Click a tab to load the corresponding Markdown file from this repository.</p>
+      <p>Tabs: overview, integrative narrative, and individual source reviews. Click a tab to load content from this repository.</p>
 
       <div class="header-row">
         <p class="repo-link">
-          <a href="https://github.com/robert-z-lehr/Literature-Review/tree/main" target="_blank" rel="noopener">View on GitHub Repository</a>
+          <a href="https://github.com/robert-z-lehr/Literature-Review" target="_blank" rel="noopener">View on GitHub Repository</a>
         </p>
 
         <!-- Feedback mini-form -->
@@ -204,8 +215,108 @@
   </div>
 
   <script>
-    // ---- Tabs configuration ----
+    // ---------- Overview tab content (embedded HTML) ----------
+    const OVERVIEW_HTML = `
+      <section class="hero">
+        <h1>Assessing the Potential of Stoplight-Mounted Shade Structures to Reduce Urban Heat Exposure and Promote Pedestrian Equity</h1>
+        <div class="meta">
+          <strong>Robert Lehr</strong> — Ph.D. Student, Civil Engineering (Sustainable Systems), The University of Texas at Austin<br/>
+          <span>Date: August 10, 2025</span> · <span>rzl94</span> ·
+          <a href="mailto:robert.z.lehr@utexas.edu">robert.z.lehr@utexas.edu</a> ·
+          <a href="tel:+15129220392">512-922-0392</a>
+        </div>
+        <div class="meta">
+          Advisors: Dr. Kerry Kinney; Dr. Kasey Faust — Department of Civil, Architectural and Environmental Engineering
+        </div>
+      </section>
+
+      <section>
+        <h2>Abstract</h2>
+        <p>Extreme heat creates acute risks for pedestrians at signalized intersections. This project evaluates <em>stoplight-mounted shade (SMS)</em> — modular, cantilevered canopies retrofitted to existing traffic signal poles — as a rapid, low-footprint intervention for localized cooling. Drawing on urban climatology, behavioral science, equity mapping, and structural feasibility, the study tests SMS impacts on mean radiant temperature (MRT), pedestrian behavior, and equity-aligned siting. Outputs aim to inform municipal standards and a replicable deployment framework.</p>
+        <div class="kv">
+          <p><strong>Keywords:</strong> equity in public space; pedestrian infrastructure; shade structures; thermal comfort; urban heat mitigation</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Table of Contents</h2>
+        <ol class="toc">
+          <li>Abstract</li>
+          <li>Introduction</li>
+          <li>Problem Statement</li>
+          <li>Research Objectives & Questions</li>
+          <li>Literature Review & Precedents</li>
+          <li>Methodology</li>
+          <li>Conclusion · References · Appendices</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Introduction (condensed)</h2>
+        <p>Intersections are high-exposure nodes where enforced waiting magnifies heat burden, especially for transit users and underserved neighborhoods. Trees and shelters face siting, clearance, and maintenance constraints. SMS targets these constraints with reversible, pole-mounted shade where footprint is limited.</p>
+        <div class="callout">
+          <strong>Observed gaps:</strong>
+          <ul>
+            <li>No evaluation framework for pole-mounted shade retrofits.</li>
+            <li>Limited intersection-scale thermal exposure data.</li>
+            <li>Equity metrics rarely operationalized in shade placement.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Core Objectives</h2>
+        <ul>
+          <li>Quantify thermal performance (MRT, WBGT, UTCI) via simulation and field validation.</li>
+          <li>Assess behavioral response (comfort, safety, aesthetics, utility).</li>
+          <li>Map equity-aligned deployment using GIS overlays and public datasets.</li>
+          <li>Test structural feasibility (ASCE 7-22, wind/vibration) for retrofits on existing poles.</li>
+          <li>Compare SROI vs. alternatives (trees, kiosks, coatings).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Representative Research Questions</h2>
+        <ul>
+          <li>How much does MRT decrease beneath SMS vs. unshaded areas?</li>
+          <li>Which materials/angles/geometries optimize cooling without compromising sightlines or loads?</li>
+          <li>Which poles are feasible given structural, spatial, and permitting constraints?</li>
+          <li>Where do equity, exposure, and pedestrian volume intersect for priority siting?</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Methodology (high level)</h2>
+        <ul>
+          <li><strong>Phase 1:</strong> CFD/radiative modeling; ASCE 7-22 load analysis; FEA on brackets/arms/fabrics.</li>
+          <li><strong>Phase 2:</strong> Field measurements (black globe, pyranometer, MRT sensors) at matched intersections; intercept surveys.</li>
+          <li><strong>Deployment planning:</strong> GIS weighted overlays (transit reliance, exposure, density, sidewalk width, equity metrics).</li>
+          <li><strong>Success criteria:</strong> ≥10 °C MRT reduction, behavioral shifts, structural compliance, equity alignment.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Design Implications (snapshot)</h2>
+        <ul>
+          <li><strong>Thermal performance:</strong> target ~15–25 °C MRT reduction at peak hours (context dependent).</li>
+          <li><strong>Behavioral alignment:</strong> prioritize enforced-pause zones; consider groups with lower adaptive capacity.</li>
+          <li><strong>Feasibility:</strong> reversible, non-invasive attachments; pole-specific wind/vibration checks.</li>
+          <li><strong>Equity:</strong> focus on high-vulnerability, low-canopy corridors identified in city data.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>Feedback welcome via the form above. Include your email if you’d like a reply.</p>
+      </section>
+    `;
+
+    // ---------- Tabs configuration ----------
+    // Each tab can have either:
+    // - { html: "..."}  => render inline HTML
+    // - { path: "path/to/file.md" } => fetch Markdown from the repo
     const TABS = [
+      { label: "Overview", html: OVERVIEW_HTML },
       { label: "Integrative Narrative", path: "drafts/integrative-literature-review.md" },
       { label: "Thermal Exposure — Key Sources", path: "sources/Thermal_Exposure_Key_Sources.md" },
       { label: "Equity & Accessibility", path: "sources/Equity_Accessibility.md" },
@@ -248,12 +359,23 @@
     }
 
     async function activateTab(idx) {
+      // Update selected state
       [...tabsEl.children].forEach((el, i) => {
         el.setAttribute("aria-selected", i === idx ? "true" : "false");
       });
       panelEl.innerHTML = '<div class="loading">Loading…</div>';
-      const mdPath = TABS[idx].path;
 
+      const tab = TABS[idx];
+
+      // Render embedded HTML tab
+      if (tab.html) {
+        panelEl.innerHTML = tab.html;
+        panelEl.focus({ preventScroll: true });
+        return;
+      }
+
+      // Otherwise fetch Markdown
+      const mdPath = tab.path;
       try {
         const md = await fetchMarkdown(mdPath);
         panelEl.innerHTML = marked.parse(md);
@@ -263,9 +385,8 @@
       }
     }
 
-    // ---- Feedback form logic (Formspree example) ----
-    // Where the email is "sent from": Formspree receives the POST and forwards to your configured inbox.
-    // Replace with your endpoint: https://formspree.io/f/YOUR_FORM_ID
+    // ---------- Feedback form logic (Formspree example) ----------
+    // Replace with your endpoint, e.g., https://formspree.io/f/abcdwxyz
     const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
     const fbForm   = document.getElementById("feedbackForm");
@@ -334,7 +455,6 @@
         }
 
         fbMsg.value = "";
-        // keep optional email as-is so they can send multiple messages
         setStatus("Thank you — feedback sent.", true);
       } catch (err) {
         setStatus("Could not send. Please try again or email directly.", false);
