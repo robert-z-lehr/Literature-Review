@@ -20,6 +20,15 @@
       --border: #EAC7B4;    /* borders */
       --link: #8A3E22;      /* links */
       --maxw: 1050px;
+
+      --btn-bg: #EFC8B2;
+      --btn-bg-hover: #E7B79B;
+      --btn-border: #D9A88C;
+      --input-bg: #FFFDFC;
+      --input-border: #E6CABB;
+      --input-placeholder: #9D7F73;
+      --ok: #1b7f4b;
+      --err: #8a2f1d;
     }
 
     html, body {
@@ -35,19 +44,74 @@
       margin: 28px auto 48px auto;
       padding: 0 16px;
     }
+
     header h1 {
       font-size: clamp(1.4rem, 2.2vw, 2rem);
       margin: 0 0 4px 0;
       letter-spacing: .2px;
       color: var(--accent);
     }
-    header p {
-      margin: 4px 0 12px 0; color: var(--muted);
+    header p { margin: 4px 0 8px 0; color: var(--muted); }
+
+    /* Top row: repo link + feedback form aligned */
+    .header-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 6px;
+      margin-bottom: 14px;
     }
     .repo-link {
       font-size: 0.9rem;
-      margin-top: 8px;
+      flex: 0 0 auto;
     }
+
+    /* Feedback mini-form */
+    .feedback {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex: 1 1 480px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    .feedback input[type="text"],
+    .feedback input[type="email"]{
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 0.95rem;
+      color: var(--fg);
+      outline: none;
+      min-width: 260px;
+    }
+    .feedback input[type="text"]::placeholder{
+      color: var(--input-placeholder);
+    }
+    .feedback input[type="email"]{
+      min-width: 200px;
+    }
+    .feedback .feedback-btn{
+      background: var(--btn-bg);
+      border: 1px solid var(--btn-border);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .feedback .feedback-btn:hover{
+      background: var(--btn-bg-hover);
+    }
+    .feedback .status{
+      font-size: 0.9rem;
+      min-height: 1.2em;
+    }
+    .status.ok { color: var(--ok); }
+    .status.err{ color: var(--err); }
 
     /* Tabs */
     .tabs {
@@ -65,10 +129,8 @@
       cursor: pointer; user-select: none;
       font-size: 0.95rem;
     }
-    .tab[aria-selected="true"] {
-      background: var(--tab-active);
-      font-weight: 600;
-    }
+    .tab[aria-selected="true"] { background: var(--tab-active); font-weight: 600; }
+
     .panel {
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -79,8 +141,7 @@
     .loading, .error {
       padding: 12px 0; color: var(--muted);
       font-family: ui-monospace, Menlo, Consolas, monospace;
-      font-size: 0.95rem;
-      white-space: pre-wrap;
+      font-size: 0.95rem; white-space: pre-wrap;
     }
 
     /* Rendered Markdown tweaks */
@@ -100,15 +161,41 @@
     <header>
       <h1>Stoplight-Mounted Shade Structures — Literature & Precedents</h1>
       <p>Tabs: integrative narrative and individual source reviews. Click a tab to load the corresponding Markdown file from this repository.</p>
-      <p class="repo-link">
-        <a href="https://github.com/robert-z-lehr/Literature-Review/tree/main" target="_blank" rel="noopener">View on GitHub Repository</a>
-      </p>
+
+      <div class="header-row">
+        <p class="repo-link">
+          <a href="https://github.com/robert-z-lehr/Literature-Review/tree/main" target="_blank" rel="noopener">View on GitHub Repository</a>
+        </p>
+
+        <!-- Feedback mini-form -->
+        <form class="feedback" id="feedbackForm" action="#" method="POST" novalidate>
+          <input
+            type="text"
+            id="fbMessage"
+            name="message"
+            placeholder="write feedback, questions, or suggestions here!"
+            aria-label="Feedback message"
+            required
+          />
+          <input
+            type="email"
+            id="fbEmail"
+            name="email"
+            placeholder="optional email if you want a reply"
+            aria-label="Your email (optional)"
+          />
+          <button type="button" id="fbBtn" class="feedback-btn" aria-label="Send feedback"
+            data-label-default="Feedback" data-label-hover="Send">Feedback</button>
+          <span class="status" id="fbStatus" aria-live="polite"></span>
+
+          <!-- Honeypot (spam trap) -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        </form>
+      </div>
     </header>
 
     <!-- TAB BAR -->
-    <nav class="tabs" id="tabs" role="tablist" aria-label="Literature review tabs">
-      <!-- Tabs are injected by JS -->
-    </nav>
+    <nav class="tabs" id="tabs" role="tablist" aria-label="Literature review tabs"></nav>
 
     <!-- CONTENT PANEL -->
     <section class="panel" id="panel" role="tabpanel" tabindex="0" aria-live="polite">
@@ -117,7 +204,7 @@
   </div>
 
   <script>
-    // ---- Configure your tabs here ----
+    // ---- Tabs configuration ----
     const TABS = [
       { label: "Integrative Narrative", path: "drafts/integrative-literature-review.md" },
       { label: "Thermal Exposure — Key Sources", path: "sources/Thermal_Exposure_Key_Sources.md" },
@@ -127,12 +214,10 @@
       { label: "Niyogi 2019 (Austin Heat Mapping)", path: "sources/Niyogi_2019_AustinHeatMapping.md" }
     ];
 
-    // Utility: get repo base path (works on GH Pages under /<repo>/)
+    // Repo base path (works on GH Pages under /<repo>/)
     const basePath = (() => {
       const parts = window.location.pathname.split("/").filter(Boolean);
-      if (parts.length >= 1) {
-        return "/" + parts[0] + "/";
-      }
+      if (parts.length >= 1) return "/" + parts[0] + "/";
       return "/";
     })();
 
@@ -175,6 +260,85 @@
         panelEl.focus({ preventScroll: true });
       } catch (err) {
         panelEl.innerHTML = `<div class="error">Could not load: ${mdPath}\n${err.message}</div>`;
+      }
+    }
+
+    // ---- Feedback form logic (Formspree example) ----
+    // Where the email is "sent from": Formspree receives the POST and forwards to your configured inbox.
+    // Replace with your endpoint: https://formspree.io/f/YOUR_FORM_ID
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+    const fbForm   = document.getElementById("feedbackForm");
+    const fbMsg    = document.getElementById("fbMessage");
+    const fbEmail  = document.getElementById("fbEmail");
+    const fbBtn    = document.getElementById("fbBtn");
+    const fbStatus = document.getElementById("fbStatus");
+
+    // Hover: swap label "Feedback" <-> "Send"
+    fbBtn.addEventListener("mouseenter", () => {
+      fbBtn.textContent = fbBtn.dataset.labelHover || "Send";
+    });
+    fbBtn.addEventListener("mouseleave", () => {
+      fbBtn.textContent = fbBtn.dataset.labelDefault || "Feedback";
+    });
+
+    // Submit on click
+    fbBtn.addEventListener("click", submitFeedback);
+
+    // Submit on Enter when message input focused
+    fbMsg.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        submitFeedback();
+      }
+    });
+
+    function setStatus(msg, ok = false) {
+      fbStatus.textContent = msg;
+      fbStatus.className = "status " + (ok ? "ok" : "err");
+    }
+
+    async function submitFeedback() {
+      const message = (fbMsg.value || "").trim();
+      const email   = (fbEmail.value || "").trim();
+
+      if (!message) {
+        setStatus("Please enter a message before sending.", false);
+        fbMsg.focus();
+        return;
+      }
+
+      setStatus("Sending…", true);
+
+      try {
+        // Honeypot check
+        const honeypot = [...fbForm.elements].find(el => el.name === "_gotcha");
+        if (honeypot && honeypot.value) return; // silently drop bots
+
+        const payload = {
+          message,
+          email: email || undefined,
+          page: location.href,
+          ua: navigator.userAgent
+        };
+
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          const txt = await res.text();
+          throw new Error(`HTTP ${res.status} ${txt}`.slice(0, 240));
+        }
+
+        fbMsg.value = "";
+        // keep optional email as-is so they can send multiple messages
+        setStatus("Thank you — feedback sent.", true);
+      } catch (err) {
+        setStatus("Could not send. Please try again or email directly.", false);
+        console.error(err);
       }
     }
 
