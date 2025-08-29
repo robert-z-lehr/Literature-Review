@@ -1,0 +1,2 @@
+# Conclusion
+This study evaluates the thermal, structural, and spatial performance of a modular shade retrofit for signalized intersections through simulation, field measurement, and GIS-based siting analysis. The methodology is designed to test a ≥10 °C mean radiant temperature reduction threshold, measure associated pedestrian responses, and confirm structural and equity compliance. While focused on Austin, the framework is intended to establish a precedent for similar assessments in other urban areas facing comparable heat exposure challenges.
