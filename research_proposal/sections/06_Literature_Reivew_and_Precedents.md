@@ -21,23 +21,12 @@ Focuses on how pedestrians adapt or fail to adapt behaviorally in response to sh
 Pedestrian responses to heat are highly context-dependent and shaped by both thermal discomfort and environmental cues. Field and experimental studies have shown that perceived temperature influences dwell time, route selection, and compliance with pedestrian signals. Middel et al. (2018) found that shade presence in Phoenix not only reduced MRT but also increased the likelihood of pedestrians lingering in shaded areas. Similarly, Johansson et al. (2014) documented changes in walking speed and stop behavior in shaded vs. unshaded zones, noting a strong correlation between MRT and pause duration. Hartz et al. (2006) suggest that behavioral adaptation to heat is uneven across pedestrian populations; individuals with reduced mobility – such as some older adults or those with certain health conditions – exhibited less spatial adjustment to avoid thermal exposure, likely due to a combination of physical and environmental constraints. These findings suggest that shade placement is most effective at enforced-pause zones (e.g., signalized crosswalks), rather than through broader, generalized thermal comfort measures.
 
 ### Table 6.2 – *Behavioral Response References and Findings*
-Citation
-Focus/Metric
-Key Finding
-Method
-Middel et al., 2018
-Shade and pedestrian lingering
-Pedestrians more likely to dwell in shaded environments
-Field observation
-Johansson et al., 2014
-MRT vs. pedestrian speed and stops
-Higher MRT correlated with faster walking and shorter pauses
-Experimental urban study
-Hartz et al., 2006
-Behavioral response by age cohort
-Older adults show less spatial adaptation to avoid heat
-GIS and interview analysis
 
+| Citation             | Focus / Metric                  | Key Finding                                                    | Method                   |
+|----------------------|---------------------------------|----------------------------------------------------------------|--------------------------|
+| Middel et al., 2018  | Shade and pedestrian lingering  | Pedestrians more likely to dwell in shaded environments         | Field observation        |
+| Johansson et al., 2014| MRT vs. pedestrian speed and stops | Higher MRT correlated with faster walking and shorter pauses   | Experimental urban study |
+| Hartz et al., 2006   | Behavioral response by age cohort| Older adults show less spatial adaptation to avoid heat         | GIS and interview analysis|
 
 ## 6.3 Shade Infrastructure Types and Constraints
 Reviews engineered and natural shade structures, including tradeoffs, material properties, and mounting limitations.
@@ -46,30 +35,14 @@ Engineered shade structures offer more immediate thermal protection and design c
 The mounting method is another key constraint. While most shade structures are freestanding or embedded in the sidewalk, few precedents exist for cantilevered systems mounted on vertical poles. The absence of this typology in EPA’s (2012) review or in recent municipal infrastructure catalogs reflects both structural and jurisdictional hurdles, indicating a gap in current practice that warrants investigation for constrained environments.
 
 ### Table 6.3 – *Shade Infrastructure Types and Constraints*
-Citation
-Focus / Metric
-Key Finding
-Method
-EPA, 2012
-Vegetative vs. built shade
-Trees effective but constrained by space and maintenance
-Literature and case review
-Unal, 2025
-MRT reduction from shade fabrics
-Shading reduced MRT by up to 10 °C in hot-arid environments
-Field observation
-Middel et al., 2020
-Fabric transmissivity and MRT
-Dense fabrics lower MRT but increase wind and obstruction risk
-Field testing
-Norton et al., 2015
-Shade design and morphology
-No universal design; must fit geometry, traffic, and visibility
-Meta-synthesis
-Austin ADA, 2021
-Sidewalk clearance requirements
-4 ft continuous clearance restricts base-mounted structures
-Design code specification
+
+| Citation           | Focus / Metric                | Key Finding                                                   | Method                     |
+|--------------------|-------------------------------|---------------------------------------------------------------|----------------------------|
+| EPA, 2012          | Vegetative vs. built shade    | Trees effective but constrained by space and maintenance      | Literature and case review |
+| Unal, 2025         | MRT reduction from shade fabrics | Shading reduced MRT by up to 10 °C in hot-arid environments | Field observation          |
+| Middel et al., 2020| Fabric transmissivity and MRT | Dense fabrics lower MRT but increase wind and obstruction risk| Field testing              |
+| Norton et al., 2015| Shade design and morphology   | No universal design; must fit geometry, traffic, and visibility| Meta-synthesis             |
+| Austin ADA, 2021   | Sidewalk clearance requirements | 4 ft continuous clearance restricts base-mounted structures  | Design code specification  |
 
 
 ## 6.4 Equity, Vulnerability, and Heat Exposure
@@ -79,56 +52,27 @@ In Austin, Texas, the Urban Heat Equity Tool (City of Austin, 2022) maps overlap
 Access to shade is not only a matter of urban forestry or infrastructure deployment but also a determinant of health equity. The CDC (2021) notes that residents in high-exposure zones often have limited access to air conditioning or cooling centers, making shade at transit stops and intersections a frontline defense. These inequities are compounded during heatwaves, when mobility constraints or lack of shelter options disproportionately endanger vulnerable groups, including the elderly, children, and outdoor workers (White-Newsome et al., 2014). If deployed in high-vulnerability zones, SMS could serve as a targeted infrastructure type capable of reducing localized heat exposure risks.
 
 ### Table 6.4 – *Equity and Heat Exposure References and Findings*
-Citation
-Focus / Metric
-Key Finding
-Method
-Jesdale et al., 2013
-Tree cover and race/ethnicity
-Black and Hispanic populations live in areas with significantly less canopy
-Statistical regression
-Hsu et al., 2021
-Heat-risk land cover and demographics
-Disparities exist in both surface temp and green space access
-Spatial analysis
-City of Austin, 2022
-Urban heat vulnerability mapping
-East Austin shows highest risk due to overlapping social and environmental factors
-GIS + city data synthesis
-Hoffman et al., 2020
-Historical redlining and heat exposure
-Redlined zones are hotter today by up to 5°C (9°F)
-Historical spatial mapping
+
+| Citation             | Focus / Metric                       | Key Finding                                                            | Method                      |
+|----------------------|---------------------------------------|------------------------------------------------------------------------|-----------------------------|
+| Jesdale et al., 2013 | Tree cover and race/ethnicity         | Black and Hispanic populations live in areas with significantly less canopy | Statistical regression      |
+| Hsu et al., 2021     | Heat-risk land cover and demographics | Disparities exist in both surface temp and green space access           | Spatial analysis            |
+| City of Austin, 2022 | Urban heat vulnerability mapping      | East Austin shows highest risk due to overlapping social and environmental factors | GIS + city data synthesis   |
+| Hoffman et al., 2020 | Historical redlining and heat exposure| Redlined zones are hotter today by up to 5°C (9°F)                      | Historical spatial mapping  |
 
 ## 6.5 Public Perception and Acceptability of Shade Interventions
 Summarizes findings on user comfort, perceived utility, aesthetics, and social acceptance of shade structures.
 User comfort, perceived utility, and social acceptance influence the long-term effectiveness of shade infrastructure as much as its technical performance. Perceptions of thermal comfort often diverge from measured conditions; Nikolopoulou and Steemers (2003) found that cultural context and subjective expectations shape comfort assessments as strongly as physical variables. Behavioral factors also play a role: Thorsson et al. (2007) observed that negative social cues—such as perceived safety concerns or visual neglect—can deter use of shaded areas even during periods of high heat. Preferences are further shaped by familiarity and visual appeal; Knez and Thorsson (2006) reported that emotional attachment to certain microclimates was strongly influenced by prior experience and aesthetic qualities. Design characteristics can therefore alter both function and acceptance. Lai et al. (2019) showed that bus shelters with artistic or visually distinctive elements increased user satisfaction and dwell time compared to purely functional designs. Local engagement data from Capital Metro (2021) reinforce these findings in the Austin context, with shade ranked as a top priority for improving comfort at transit stops. Together, these studies indicate that the success of shade interventions depends not only on thermal performance but also on their integration with cultural preferences, aesthetic quality, and perceived safety.
 
 ### Table 6.5 – *Public Perception and Acceptability References and Findings*
-Citation
-Focus / Metric
-Key Finding
-Method
-Nikolopoulou & Steemers, 2003
-Subjective thermal comfort
-Perception often diverges from physical data; cultural context matters
-Surveys + microclimate study
-Thorsson et al., 2007
-Shade usage behavior in public spaces
-Negative social cues reduce use even during high heat
-Observational + interview
-Knez & Thorsson, 2006
-Emotional attachment to microclimates
-Preferences shaped by familiarity and visual comfort
-Psychometric analysis
-Lai et al., 2019
-Artistic bus shelter evaluation
-Artistic and functional designs increase satisfaction and dwell time
-Design intervention survey
-Capital Metro, 2021
-Transit stop feedback in Austin
-Shade ranked as a top priority for wait-time environments
-Community engagement data
+
+| Citation                     | Focus / Metric                          | Key Finding                                                            | Method                       |
+|------------------------------|------------------------------------------|------------------------------------------------------------------------|------------------------------|
+| Nikolopoulou & Steemers, 2003| Subjective thermal comfort               | Perception often diverges from physical data; cultural context matters | Surveys + microclimate study |
+| Thorsson et al., 2007        | Shade usage behavior in public spaces    | Negative social cues reduce use even during high heat                  | Observational + interview    |
+| Knez & Thorsson, 2006        | Emotional attachment to microclimates    | Preferences shaped by familiarity and visual comfort                   | Psychometric analysis        |
+| Lai et al., 2019             | Artistic bus shelter evaluation          | Artistic and functional designs increase satisfaction and dwell time   | Design intervention survey   |
+| Capital Metro, 2021          | Transit stop feedback in Austin          | Shade ranked as a top priority for wait-time environments              | Community engagement data    |
 
 ## 6.6 Temporal and Spatial Design Considerations
 Examines how time-of-day, roadway projection, and seasonal factors influence SMS performance and design trade-offs.
