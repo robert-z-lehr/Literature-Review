@@ -1,4 +1,4 @@
-Appendix B - Methods & Instruments
+# Appendix B - Methods & Instruments
 
 Method / Tool
 Purpose in this study
