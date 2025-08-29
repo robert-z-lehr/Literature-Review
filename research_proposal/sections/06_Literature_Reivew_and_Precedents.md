@@ -81,26 +81,13 @@ Spatial design also influences coverage effectiveness. Precedents from bus stop 
 Seasonal variation adds another layer of design consideration. In temperate and subtropical climates, shading typically enhances comfort during warm months but can have adverse effects in winter. However, the localized footprint of SMS – covering small pedestrian waiting areas – allows users to reposition themselves between shaded and sunlit zones as desired. This flexibility supports prioritizing summer comfort without permanently compromising winter warmth.
 
 ### Table 6.6 – *Temporal and Spatial Design Considerations References and Findings*
-Citation
-Focus / Metric
-Key Finding
-Method
-Middel et al., 2016
-MRT variation by time of day
-Greatest cooling benefit occurs midday
-Field measurement
-Lee et al., 2020
-Shaded vs. unshaded thermal performance
-Shade most effective under high solar angles
-Field measurement
-Kántor et al., 2018
-Pedestrian thermal comfort timing
-Highest discomfort and transit activity coincide midday
-Field measurement + survey
-CapMetro, 2024
-Austin transit ridership patterns
-Sustained midday ridership in key corridors
-Ridership data analysis
+
+| Citation                     | Focus / Metric                          | Key Finding                                                            | Method                       |
+|------------------------------|------------------------------------------|------------------------------------------------------------------------|------------------------------|
+| Middel et al., 2016 | MRT variation by time of day | Greatest cooling benefit occurs midday | Field measurement |
+| Lee et al., 2020 | Shaded vs. unshaded thermal performance | Shade most effective under high solar angles | Field measurement |
+| Kántor et al., 2018 | Pedestrian thermal comfort timing | Highest discomfort and transit activity coincide midday| Field measurement + survey |
+| CapMetro, 2024| Austin transit ridership patterns | Sustained midday ridership in key corridors | Ridership data analysis |
 
 ## 6.7  Feasibility of Retrofitting Existing Infrastructure
 Discusses challenges in adapting existing traffic signal poles for structural loads, permitting, and deployment constraints
@@ -111,6 +98,7 @@ ADA compliance and crash safety considerations further constrain design. Any ret
 Although these constraints are significant, they do not rule out feasibility. Retrofit concepts that position added weight close to the pole’s centerline, avoid obstructing sidewalks, and allow removal without drilling, welding, or otherwise altering the original pole tend to be more compatible with current pole designs and permitting frameworks.
 
 ### Table 6.7 – *Retrofit Feasibility References and Findings*
+
 Citation
 Focus / Metric
 Key Finding
@@ -145,6 +133,7 @@ High-resolution shade mapping by American Forests and UCLA (2024) documented mid
 Despite these policy frameworks and mapping tools, no existing program directly addresses short-duration pedestrian exposures at intersections – locations where heat risk can be acute and unavoidable. The Stoplight-Mounted Shade (SMS) concept directly targets this unserved niche by integrating retrofitted shading into existing mobility infrastructure, complementing larger-scale canopy and cooling strategies without requiring new ground footprint.
 
 ### Table 6.8 – *Austin Heat Initiatives and Observed Gaps*
+
 Citation
 Focus / Metric
 Key Finding
@@ -176,6 +165,7 @@ Integrates findings from all prior sections into unified insights, design criter
 Stoplight-Mounted Shade (SMS) structures are a modular, scalable intervention to mitigate pedestrian heat exposure at intersections – an area underserved by current urban cooling strategies. Research indicates well-designed shade can reduce mean radiant temperature (MRT) by approximately 15 – 25 °C (27 - 45°F) during peak hours, improving thermal comfort and influencing wait-location and dwell behaviors at crossings; potential effects on signal compliance and perceived safety warrant evaluation (Middel et al., 2016; Lee et al., 2020). Performance depends on precise placement, material selection, and alignment with hourly solar loads. Deployment must address spatial constraints, pole-specific structural capacity, and regulatory requirements. Equity-driven siting is critical, targeting high-vulnerability, low-canopy corridors shaped by historic inequities. Public acceptance requires attention to aesthetics, cleanliness, and functional integration. Feasibility hinges on reversible, structurally validated mounting and early coordination with permitting authorities. Austin’s current plans provide partial alignment but lack targeted tools for short-duration, high-frequency, and high-heat intersection exposures.
 
 ### Table 6.9 – *Cross-cutting Design Implications and Source Domains*
+
 Design Factor
 Key Requirement
 Source Sections
