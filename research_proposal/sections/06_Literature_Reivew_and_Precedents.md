@@ -99,31 +99,13 @@ Although these constraints are significant, they do not rule out feasibility. Re
 
 ### Table 6.7 – *Retrofit Feasibility References and Findings*
 
-Citation
-Focus / Metric
-Key Finding
-Method
-TxDOT, 2014
-Signal pole structural specs
-Poles designed for signal/sign loads, not shade structures
-Engineering specification
-Khan et al., 2019
-Light pole retrofitting risks
-Added mass can cause vibration/fatigue failure without damping
-Structural simulation + testing
-ASCE 7-22
-Wind load categories
-Wind exposure classification affects allowable attachment load
-Structural standards
-AASHTO MASH, 2016
-Crash safety for roadside hardware
-Retrofits must not increase pedestrian or vehicle crash risk
-Hardware safety criteria
-City of Austin TPW, 2021
-Jurisdiction over traffic signals
-Shade retrofits require approval from separate transportation departments
-Policy and permitting review
-
+| Citation              | Focus / Metric                 | Key Finding                                                     | Method                       |
+|-----------------------|---------------------------------|-----------------------------------------------------------------|------------------------------|
+| TxDOT, 2014           | Signal pole structural specs    | Poles designed for signal/sign loads, not shade structures      | Engineering specification    |
+| Khan et al., 2019     | Light pole retrofitting risks   | Added mass can cause vibration/fatigue failure without damping  | Structural simulation + testing |
+| ASCE 7-22             | Wind load categories            | Wind exposure classification affects allowable attachment load  | Structural standards         |
+| AASHTO MASH, 2016     | Crash safety for roadside hardware | Retrofits must not increase pedestrian or vehicle crash risk | Hardware safety criteria     |
+| City of Austin TPW, 2021 | Jurisdiction over traffic signals | Shade retrofits require approval from separate transportation departments | Policy and permitting review |
 
 ## 6.8 Integration with Austin’s Urban Heat and Mobility Plans
 Explores how SMS-like systems intersect with transportation, Vision Zero, transit stops, and other urban systems.
@@ -134,31 +116,13 @@ Despite these policy frameworks and mapping tools, no existing program directly 
 
 ### Table 6.8 – *Austin Heat Initiatives and Observed Gaps*
 
-Citation
-Focus / Metric
-Key Finding
-Method
-Austin Urban Forest Plan, 2014
-Citywide canopy goal
-Target: 50 % by 2050; wide coverage gaps (11 – 78 %)
-City policy + GIS analysis
-Austin Heat Resilience Playbook, 2023
-Cooling infrastructure & equity
-56 actions, strong East Austin focus
-City planning document
-City Auditor Report, 2025
-Heat resilience execution
-Score: 3 – 4/5; gaps in funding and coordination
-Program audit
-American Forests & UCLA Shade Map, 2024
-Sidewalk shade coverage
-Median sidewalk shade ~10 – 35 %; lowest in East Austin
-LIDAR + spatial analysis
-AISD Campus Shade Study, 2024
-School drop-off exposure
-12 – 20 % canopy coverage; limited shade at key times
-Cross-sectional GIS study
-
+| Citation                          | Focus / Metric              | Key Finding                                               | Method                     |
+|-----------------------------------|-----------------------------|-----------------------------------------------------------|----------------------------|
+| Austin Urban Forest Plan, 2014    | Citywide canopy goal         | Target: 50 % by 2050; wide coverage gaps (11 – 78 %)      | City policy + GIS analysis |
+| Austin Heat Resilience Playbook, 2023 | Cooling infrastructure & equity | 56 actions, strong East Austin focus                    | City planning document     |
+| City Auditor Report, 2025         | Heat resilience execution    | Score: 3 – 4/5; gaps in funding and coordination         | Program audit              |
+| American Forests & UCLA Shade Map, 2024 | Sidewalk shade coverage     | Median sidewalk shade ~10 – 35 %; lowest in East Austin  | LIDAR + spatial analysis   |
+| AISD Campus Shade Study, 2024     | School drop-off exposure     | 12 – 20 % canopy coverage; limited shade at key times    | Cross-sectional GIS study  |
 
 ## 6.9 Summary of Findings and Design Implications
 Integrates findings from all prior sections into unified insights, design criteria, and systemic considerations.
@@ -166,37 +130,12 @@ Stoplight-Mounted Shade (SMS) structures are a modular, scalable intervention to
 
 ### Table 6.9 – *Cross-cutting Design Implications and Source Domains*
 
-Design Factor
-Key Requirement
-Source Sections
-Example References
-Thermal Performance
-Reduce MRT by ~15–25 °C during peak hours; consider hourly variation in design
-6.1, 6.3, 6.6
-Middel et al., 2016; Lee et al., 2020
-Behavioral Alignment
-Prioritize enforced-pause zones; account for lower adaptive capacity in some groups
-6.2, 6.5
-Middel et al., 2018; Capital Metro, 2021
-Structural Feasibility
-Validate for pole-specific wind/vibration loads; use reversible, non-invasive attachments
-6.3, 6.7
-TxDOT, 2014; Khan et al., 2019
-Equity Targeting
-Focus on high-vulnerability, low-canopy corridors
-6.4, 6.8
-City of Austin, 2022; Hoffman et al., 2020
-Public Acceptability
-Ensure visual appeal, cleanliness, and cultural/functional integration
-6.5
-Knez & Thorsson, 2006; Lai et al., 2019
-Regulatory Integration
-Meet ADA access, crash safety (MASH), and wind design (ASCE 7) from the outset
-6.3, 6.7
-ADA, 2010; AASHTO MASH, 2016; ASCE 7-22
-Local Context Fit
-Align with equity heat maps, mobility plans, and “Cool Corridors” initiatives
-6.8
-City of Austin, 2022
-
-
+| Design Factor         | Key Requirement                                                                 | Source Sections | Example References                           |
+|-----------------------|---------------------------------------------------------------------------------|-----------------|----------------------------------------------|
+| Thermal Performance   | Reduce MRT by ~15–25 °C during peak hours; consider hourly variation in design  | 6.1, 6.3, 6.6   | Middel et al., 2016; Lee et al., 2020        |
+| Behavioral Alignment  | Prioritize enforced-pause zones; account for lower adaptive capacity in some groups | 6.2, 6.5     | Middel et al., 2018; Capital Metro, 2021     |
+| Structural Feasibility| Validate for pole-specific wind/vibration loads; use reversible, non-invasive attachments | 6.3, 6.7 | TxDOT, 2014; Khan et al., 2019               |
+| Equity Targeting      | Focus on high-vulnerability, low-canopy corridors                              | 6.4, 6.8       | City of Austin, 2022; Hoffman et al., 2020   |
+| Public Acceptability  | Ensure visual appeal, cleanliness, and cultural/functional integration         | 6.5            | Knez & Thorsson, 2006; Lai et al., 2019      |
+| Regulatory Integration| Meet ADA access, crash safety (MASH), and wind design (ASCE 7) from the outset | 6.3, 6.7       | ADA, 2010; AASHTO MASH, 2016; ASCE 7-22      |
+| Local Context Fit     | Align with equity heat maps, mobility plans, and “Cool Corridors” initiatives  | 6.8            | City of Austin, 2022                         |
