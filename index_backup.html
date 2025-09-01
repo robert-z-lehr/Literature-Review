@@ -2,530 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Shade Structures – Literature Review</title>
+  <title>Image Gallery – Shade Structures</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Marked: Markdown -> HTML -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
   <style>
     :root {
-      /* Warm burnt-orange inspired (not UT exact) */
-      --bg: #FFF7F1;        /* page background: light warm */
-      --fg: #2A1E1A;        /* main text: deep brown */
-      --muted: #6E5247;     /* secondary text */
-      --accent: #9B5330;    /* headings/emphasis */
-      --tab: #FCE6D9;       /* inactive tabs */
-      --tab-active: #F8D7C2;/* active tab */
-      --border: #EAC7B4;    /* borders */
-      --link: #8A3E22;      /* links */
-      --maxw: 1050px;
-
-      --btn-bg: #EFC8B2;
-      --btn-bg-hover: #E7B79B;
-      --btn-border: #D9A88C;
-      --input-bg: #FFFDFC;
-      --input-border: #E6CABB;
-      --input-placeholder: #9D7F73;
-      --ok: #1b7f4b;
-      --err: #8a2f1d;
+      --bg: #FFF7F1; --fg: #2A1E1A; --muted: #6E5247; --accent: #9B5330;
+      --border: #EAC7B4; --link: #8A3E22; --maxw: 1050px;
     }
-
-    html, body {
-      margin: 0; padding: 0; background: var(--bg); color: var(--fg);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
-      line-height: 1.55;
-    }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--fg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial; line-height:1.55; }
     a { color: var(--link); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    .wrap {
-      max-width: var(--maxw);
-      margin: 28px auto 48px auto;
-      padding: 0 16px;
-    }
+    .wrap { max-width: var(--maxw); margin: 28px auto 48px auto; padding: 0 16px; }
+    header h1 { font-size: clamp(1.4rem, 2.2vw, 2rem); margin: 0 0 6px 0; color: var(--accent); }
+    header p { margin: 6px 0 10px 0; color: var(--muted); }
 
-    header h1 {
-      font-size: clamp(1.4rem, 2.2vw, 2rem);
-      margin: 0 0 4px 0;
-      letter-spacing: .2px;
-      color: var(--accent);
+    .site-nav {
+      display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin: 10px 0 14px 0;
     }
-    header p { margin: 4px 0 8px 0; color: var(--muted); }
+    .site-nav a {
+      padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px;
+      background: #fff; color: var(--link);
+    }
+    .site-nav a:hover { background: #F8D7C2; text-decoration: none; }
 
-    /* Top row: repo link + feedback form aligned */
-    .header-row {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin-top: 6px;
-      margin-bottom: 14px;
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
     }
-    .repo-link {
-      font-size: 0.9rem;
-      flex: 0 0 auto;
+    .card {
+      border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff;
     }
-
-    /* Feedback mini-form */
-    .feedback {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      flex: 1 1 480px;
-      justify-content: flex-end;
-      flex-wrap: wrap;
+    .card img {
+      display: block; width: 100%; height: 200px; object-fit: cover; background: #f2f2f2;
     }
-    .feedback input[type="text"],
-    .feedback input[type="email"]{
-      background: var(--input-bg);
-      border: 1px solid var(--input-border);
-      border-radius: 10px;
-      padding: 8px 10px;
-      font-size: 0.95rem;
-      color: var(--fg);
-      outline: none;
-      min-width: 260px;
-    }
-    .feedback input[type="text"]::placeholder{
-      color: var(--input-placeholder);
-    }
-    .feedback input[type="email"]{
-      min-width: 200px;
-    }
-    .feedback .feedback-btn{
-      background: var(--btn-bg);
-      border: 1px solid var(--btn-border);
-      border-radius: 10px;
-      padding: 8px 12px;
-      font-size: 0.95rem;
-      cursor: pointer;
-      user-select: none;
-    }
-    .feedback .feedback-btn:hover{
-      background: var(--btn-bg-hover);
-    }
-    .feedback .status{
-      font-size: 0.9rem;
-      min-height: 1.2em;
-    }
-    .status.ok { color: var(--ok); }
-    .status.err{ color: var(--err); }
-
-    /* Tabs */
-    .tabs {
-      display: flex; gap: 6px; flex-wrap: wrap;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 6px; margin-bottom: 18px;
-    }
-    .tab {
-      display: inline-flex; align-items: center;
-      padding: 8px 12px; border: 1px solid var(--border);
-      border-bottom: none;
-      background: var(--tab);
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      cursor: pointer; user-select: none;
-      font-size: 0.95rem;
-    }
-    .tab[aria-selected="true"] { background: var(--tab-active); font-weight: 600; }
-
-    .panel {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px;
-      min-height: 200px;
-      background: transparent;
-    }
-    .loading, .error {
-      padding: 12px 0; color: var(--muted);
-      font-family: ui-monospace, Menlo, Consolas, monospace;
-      font-size: 0.95rem; white-space: pre-wrap;
-    }
-
-    /* Rendered Markdown tweaks */
-    .panel :is(h1,h2,h3,h4) { margin-top: 1.25em; color: var(--accent); }
-    .panel h1 { font-size: 1.5rem; }
-    .panel h2 { font-size: 1.25rem; }
-    .panel h3 { font-size: 1.05rem; }
-    .panel code { background: rgba(125,125,125,.12); padding: 0 .25em; border-radius: 4px; }
-    .panel pre { overflow-x: auto; padding: 12px; border: 1px solid var(--border); border-radius: 8px; }
-    .panel table { border-collapse: collapse; width: 100%; }
-    .panel th, .panel td { border: 1px solid var(--border); padding: 8px; text-align: left; }
-    .panel blockquote { border-left: 3px solid var(--border); padding-left: 12px; color: var(--muted); }
-
-    /* Small helpers for the Overview tab */
-    .hero { display: grid; gap: 6px; margin-bottom: 10px; }
-    .meta { color: var(--muted); font-size: 0.95rem; }
-    .toc { margin: .5rem 0 1rem 0; padding-left: 1.2rem; }
-    .kv { display: grid; gap: 8px; }
-    .kv p { margin: 0; }
-    .callout {
-      border: 1px solid var(--border);
-      border-radius: 10px; padding: 12px; background: #fff8f4;
+    .card .cap {
+      padding: 10px; font-size: 0.95rem; color: var(--muted);
+      border-top: 1px solid var(--border);
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>Stoplight-Mounted Shade Structures — Literature & Precedents</h1>
-      <p>Tabs: overview, integrative narrative, and individual source reviews. Click a tab to load content from this repository.</p>
+      <h1>Image Gallery</h1>
+      <p>Figures, maps, and prototypes related to stoplight-mounted shade structures.</p>
 
-      <div class="header-row">
-        <p class="repo-link">
-          <a href="https://github.com/robert-z-lehr/Literature-Review" target="_blank" rel="noopener">View on GitHub Repository</a>
-        </p>
-
-        <!-- Feedback mini-form -->
-        <form class="feedback" id="feedbackForm" action="#" method="POST" novalidate>
-          <input
-            type="text"
-            id="fbMessage"
-            name="message"
-            placeholder="write feedback, questions, or suggestions here!"
-            aria-label="Feedback message"
-            required
-          />
-          <input
-            type="email"
-            id="fbEmail"
-            name="email"
-            placeholder="optional email if you want a reply"
-            aria-label="Your email (optional)"
-          />
-          <button type="button" id="fbBtn" class="feedback-btn" aria-label="Send feedback"
-            data-label-default="Feedback" data-label-hover="Send">Feedback</button>
-          <span class="status" id="fbStatus" aria-live="polite"></span>
-
-          <!-- Honeypot (spam trap) -->
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-        </form>
-      </div>
+      <!-- Top menu so users can return to Home -->
+      <nav class="site-nav" aria-label="Site">
+        <a href="../index.html">Home</a>
+        <a href="./gallery.html" aria-current="page">Images</a>
+        <a href="https://github.com/robert-z-lehr/Literature-Review" target="_blank" rel="noopener">Repository</a>
+      </nav>
     </header>
 
-    <!-- TAB BAR -->
-    <nav class="tabs" id="tabs" role="tablist" aria-label="Literature review tabs"></nav>
+    <!-- Replace the image filenames with your actual files in /images -->
+    <section class="gallery" aria-label="Gallery">
+      <figure class="card">
+        <img src="../images/shade-prototype-1.jpg" alt="Shade prototype CAD or photo">
+        <figcaption class="cap">Prototype concept – cantilevered shade arm on signal pole.</figcaption>
+      </figure>
 
-    <!-- CONTENT PANEL -->
-    <section class="panel" id="panel" role="tabpanel" tabindex="0" aria-live="polite">
-      <div class="loading">Loading…</div>
+      <figure class="card">
+        <img src="../images/map-east-austin.png" alt="Map of East Austin shade coverage">
+        <figcaption class="cap">East Austin shade coverage snapshot (illustrative).</figcaption>
+      </figure>
+
+      <figure class="card">
+        <img src="../images/intersection-test-site.jpg" alt="Candidate intersection test site">
+        <figcaption class="cap">Candidate intersection test site for field measurements.</figcaption>
+      </figure>
+
+      <!-- Duplicate a block like this for each additional image -->
+      <!--
+      <figure class="card">
+        <img src="../images/FILE-NAME.EXT" alt="Describe the image accessibly">
+        <figcaption class="cap">Short caption about this image.</figcaption>
+      </figure>
+      -->
     </section>
   </div>
-
-  <script>
-    // ---------- Overview tab content (embedded HTML) ----------
-    const OVERVIEW_HTML = `
-      <section class="hero">
-        <h1>Assessing the Potential of Stoplight-Mounted Shade Structures to Reduce Urban Heat Exposure and Promote Pedestrian Equity</h1>
-        <div class="meta">
-          <strong>Robert Lehr</strong> — Ph.D. Student, Civil Engineering (Sustainable Systems), The University of Texas at Austin<br/>
-          <span>Date: August 10, 2025</span> · <span>rzl94</span> ·
-          <a href="mailto:robert.z.lehr@utexas.edu">robert.z.lehr@utexas.edu</a> ·
-          <a href="tel:+15129220392">512-922-0392</a>
-        </div>
-        <div class="meta">
-          Advisors: Dr. Kerry Kinney; Dr. Kasey Faust — Department of Civil, Architectural and Environmental Engineering
-        </div>
-      </section>
-
-      <section>
-        <h2>Abstract</h2>
-        <p>Extreme heat creates acute risks for pedestrians at signalized intersections. This project evaluates <em>stoplight-mounted shade (SMS)</em> — modular, cantilevered canopies retrofitted to existing traffic signal poles — as a rapid, low-footprint intervention for localized cooling. Drawing on urban climatology, behavioral science, equity mapping, and structural feasibility, the study tests SMS impacts on mean radiant temperature (MRT), pedestrian behavior, and equity-aligned siting. Outputs aim to inform municipal standards and a replicable deployment framework.</p>
-        <div class="kv">
-          <p><strong>Keywords:</strong> equity in public space; pedestrian infrastructure; shade structures; thermal comfort; urban heat mitigation</p>
-        </div>
-      </section>
-
-      <section>
-        <h2>Table of Contents</h2>
-        <ol class="toc">
-          <li>Abstract</li>
-          <li>Introduction</li>
-          <li>Problem Statement</li>
-          <li>Research Objectives & Questions</li>
-          <li>Literature Review & Precedents</li>
-          <li>Methodology</li>
-          <li>Conclusion · References · Appendices</li>
-        </ol>
-      </section>
-
-      <section>
-        <h2>Introduction (condensed)</h2>
-        <p>Intersections are high-exposure nodes where enforced waiting magnifies heat burden, especially for transit users and underserved neighborhoods. Trees and shelters face siting, clearance, and maintenance constraints. SMS targets these constraints with reversible, pole-mounted shade where footprint is limited.</p>
-        <div class="callout">
-          <strong>Observed gaps:</strong>
-          <ul>
-            <li>No evaluation framework for pole-mounted shade retrofits.</li>
-            <li>Limited intersection-scale thermal exposure data.</li>
-            <li>Equity metrics rarely operationalized in shade placement.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2>Core Objectives</h2>
-        <ul>
-          <li>Quantify thermal performance (MRT, WBGT, UTCI) via simulation and field validation.</li>
-          <li>Assess behavioral response (comfort, safety, aesthetics, utility).</li>
-          <li>Map equity-aligned deployment using GIS overlays and public datasets.</li>
-          <li>Test structural feasibility (ASCE 7-22, wind/vibration) for retrofits on existing poles.</li>
-          <li>Compare SROI vs. alternatives (trees, kiosks, coatings).</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Representative Research Questions</h2>
-        <ul>
-          <li>How much does MRT decrease beneath SMS vs. unshaded areas?</li>
-          <li>Which materials/angles/geometries optimize cooling without compromising sightlines or loads?</li>
-          <li>Which poles are feasible given structural, spatial, and permitting constraints?</li>
-          <li>Where do equity, exposure, and pedestrian volume intersect for priority siting?</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Methodology (high level)</h2>
-        <ul>
-          <li><strong>Phase 1:</strong> CFD/radiative modeling; ASCE 7-22 load analysis; FEA on brackets/arms/fabrics.</li>
-          <li><strong>Phase 2:</strong> Field measurements (black globe, pyranometer, MRT sensors) at matched intersections; intercept surveys.</li>
-          <li><strong>Deployment planning:</strong> GIS weighted overlays (transit reliance, exposure, density, sidewalk width, equity metrics).</li>
-          <li><strong>Success criteria:</strong> ≥10 °C MRT reduction, behavioral shifts, structural compliance, equity alignment.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Design Implications (snapshot)</h2>
-        <ul>
-          <li><strong>Thermal performance:</strong> target ~15–25 °C MRT reduction at peak hours (context dependent).</li>
-          <li><strong>Behavioral alignment:</strong> prioritize enforced-pause zones; consider groups with lower adaptive capacity.</li>
-          <li><strong>Feasibility:</strong> reversible, non-invasive attachments; pole-specific wind/vibration checks.</li>
-          <li><strong>Equity:</strong> focus on high-vulnerability, low-canopy corridors identified in city data.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Contact</h2>
-        <p>Feedback welcome via the form above. Include your email if you’d like a reply.</p>
-      </section>
-    `;
-
-    // --- Integrative Narrative: 2-pager content (inline) ---
-    const INTEGRATIVE_HTML = `
-      <section>
-        <h1>Assessing the Potential of Stoplight-Mounted Shade Structures to Reduce Urban Heat Exposure and Promote Pedestrian Equity</h1>
-        <p class="meta">
-          <strong>Robert Lehr</strong> — Ph.D. Student, Civil Engineering – Sustainable Systems Engineering, The University of Texas at Austin<br/>
-          <strong>Date:</strong> August 10, 2025 &nbsp;·&nbsp; rzl94 &nbsp;·&nbsp;
-          <a href="mailto:robert.z.lehr@utexas.edu">robert.z.lehr@utexas.edu</a> &nbsp;·&nbsp;
-          <a href="tel:+15129220392">512-922-0392</a><br/>
-          <strong>Advisors:</strong> Dr. Kerry Kinney; Dr. Kasey Faust (Civil, Architectural & Environmental Engineering)
-        </p>
-
-        <h2>Introduction</h2>
-        <p>
-          Signalized intersections in cities like Austin, TX expose pedestrians to high mean radiant temperatures (MRT) due to the absence of shade. Conventional cooling measures—trees, shelters, kiosks—are often infeasible in these constrained spaces because of right-of-way, cost, or regulatory barriers.
-          This research examines whether modular, pole-mounted canopies retrofitted to existing traffic signal poles can deliver measurable thermal relief while meeting safety, operational, and cost constraints. No major U.S. city has deployed such systems at scale, likely due to structural load concerns, driver sight-line requirements, potential curb-side congregation risks, and uncertainty about thermal benefits.
-        </p>
-
-        <h2>Motivation</h2>
-        <ul>
-          <li>Extreme heat is the deadliest weather hazard in the U.S., causing over 1,200 deaths annually (CDC, 2023).</li>
-          <li>Intersection wait times can exceed 90 seconds in full sun, increasing heat-stress risk—especially for older adults, children, and people with health conditions.</li>
-          <li>Austin averages 70+ days above 95&nbsp;°F each year. Programs such as Cool Corridors address shade expansion, but intersections remain underserved.</li>
-          <li>A modular retrofit could deliver immediate relief without new construction or the long lead times of urban forestry.</li>
-        </ul>
-
-        <h2>Problem Statement</h2>
-        <p>
-          Urban heat mitigation strategies are poorly suited to constrained intersections. Without precedents, cities lack the data to evaluate pole-mounted shade systems, leaving high-risk exposure unaddressed.
-          This study will design, model, and evaluate stoplight-mounted shade (SMS) structures to:
-        </p>
-        <ul>
-          <li>Reduce pedestrian heat exposure (MRT, WBGT, thermal comfort indices).</li>
-          <li>Meet wind-loading and safety standards without pole replacement.</li>
-          <li>Integrate with traffic signal operations.</li>
-          <li>Offer cost-effective deployment potential.</li>
-        </ul>
-
-        <h2>Research Questions</h2>
-        <ul>
-          <li><strong>Thermal Benefit:</strong> By how much can SMS reduce pedestrian MRT during peak summer conditions?</li>
-          <li><strong>Behavioral Impact:</strong> Do shaded intersections alter pedestrian positioning, compliance, or dwell time?</li>
-          <li><strong>Structural Feasibility:</strong> Can SMS meet wind-load and safety criteria without structural upgrades?</li>
-          <li><strong>Deployment Potential:</strong> What are the cost, regulatory, and logistical factors for citywide rollout?</li>
-        </ul>
-
-        <h2>Conclusions</h2>
-        <p>
-          Evidence from urban heat studies indicates small shade footprints can reduce MRT by ~5–15&nbsp;°C (9–27&nbsp;°F) during midday, lowering heat-stress risk. Feasible designs will likely use lightweight, tensioned fabrics with permeable geometry to limit wind loads and make permitting faster and simpler. If validated, SMS could provide a rapid-deployment, low-cost intervention that extends urban heat resilience to intersections overlooked by current programs, with scalable potential for other heat-vulnerable cities.
-        </p>
-
-        <h2>Select References</h2>
-        <ul>
-          <li>CDC. (2023). Heat-Related Deaths.</li>
-          <li>Middel, A., et&nbsp;al. (2016). “Impact of street orientation and aspect ratio on MRT.” <em>Urban Climate</em>, 16, 54–68.</li>
-          <li>City of Austin Transportation Dept. (2022). Cool Corridors Program.</li>
-          <li>Santamouris, M. (2016). “Cooling the cities – Review of reflective and green roofs.” <em>Solar Energy</em>, 103, 682–703.</li>
-          <li>Phoenix Office of Heat Response &amp; Mitigation. (2023). Shade Pilot Projects.</li>
-        </ul>
-      </section>
-    `;
-
-    // ---------- Tabs configuration ----------
-    // Each tab can have either:
-    // - { html: "..."}  => render inline HTML
-    // - { path: "path/to/file.md" } => fetch Markdown from the repo
-    const TABS = [
-      { label: "Overview", html: OVERVIEW_HTML },
-      { label: "Integrative Narrative", html: INTEGRATIVE_HTML },
-      { label: "Thermal Exposure — Key Sources", path: "sources/Thermal_Exposure_Key_Sources.md" },
-      { label: "Equity & Accessibility", path: "sources/Equity_Accessibility.md" },
-      { label: "Behavioral Responses", path: "sources/Behavioral_Responses.md" },
-      { label: "Feasibility & Precedents", path: "sources/Feasibility_Precedents.md" },
-      { label: "Niyogi 2019 (Austin Heat Mapping)", path: "sources/Niyogi_2019_AustinHeatMapping.md" }
-    ];
-
-    // Repo base path (works on GH Pages under /<repo>/)
-    const basePath = (() => {
-      const parts = window.location.pathname.split("/").filter(Boolean);
-      if (parts.length >= 1) return "/" + parts[0] + "/";
-      return "/";
-    })();
-
-    const tabsEl = document.getElementById("tabs");
-    const panelEl = document.getElementById("panel");
-
-    function renderTabs() {
-      tabsEl.innerHTML = "";
-      TABS.forEach((t, idx) => {
-        const btn = document.createElement("button");
-        btn.className = "tab";
-        btn.type = "button";
-        btn.setAttribute("role", "tab");
-        btn.setAttribute("aria-selected", idx === 0 ? "true" : "false");
-        btn.setAttribute("aria-controls", "panel");
-        btn.id = "tab-" + idx;
-        btn.textContent = t.label;
-        btn.addEventListener("click", () => activateTab(idx));
-        tabsEl.appendChild(btn);
-      });
-    }
-
-    async function fetchMarkdown(path) {
-      const url = basePath + path;
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status} — ${url}`);
-      return res.text();
-    }
-
-    async function activateTab(idx) {
-      // Update selected state
-      [...tabsEl.children].forEach((el, i) => {
-        el.setAttribute("aria-selected", i === idx ? "true" : "false");
-      });
-      panelEl.innerHTML = '<div class="loading">Loading…</div>';
-
-      const tab = TABS[idx];
-
-      // Render embedded HTML tab
-      if (tab.html) {
-        panelEl.innerHTML = tab.html;
-        panelEl.focus({ preventScroll: true });
-        return;
-      }
-
-      // Otherwise fetch Markdown
-      const mdPath = tab.path;
-      try {
-        const md = await fetchMarkdown(mdPath);
-        panelEl.innerHTML = marked.parse(md);
-        panelEl.focus({ preventScroll: true });
-      } catch (err) {
-        panelEl.innerHTML = `<div class="error">Could not load: ${mdPath}\n${err.message}</div>`;
-      }
-    }
-
-    // ---------- Feedback form logic (Formspree example) ----------
-    const FORMSPREE_ENDPOINT = "https://formspree.io/f/mldwdper";
-
-    const fbForm   = document.getElementById("feedbackForm");
-    const fbMsg    = document.getElementById("fbMessage");
-    const fbEmail  = document.getElementById("fbEmail");
-    const fbBtn    = document.getElementById("fbBtn");
-    const fbStatus = document.getElementById("fbStatus");
-
-    // Hover: swap label "Feedback" <-> "Send"
-    fbBtn.addEventListener("mouseenter", () => {
-      fbBtn.textContent = fbBtn.dataset.labelHover || "Send";
-    });
-    fbBtn.addEventListener("mouseleave", () => {
-      fbBtn.textContent = fbBtn.dataset.labelDefault || "Feedback";
-    });
-
-    // Submit on click
-    fbBtn.addEventListener("click", submitFeedback);
-
-    // Submit on Enter when message input focused
-    fbMsg.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        submitFeedback();
-      }
-    });
-
-    function setStatus(msg, ok = false) {
-      fbStatus.textContent = msg;
-      fbStatus.className = "status " + (ok ? "ok" : "err");
-    }
-
-    async function submitFeedback() {
-      const message = (fbMsg.value || "").trim();
-      const email   = (fbEmail.value || "").trim();
-
-      if (!message) {
-        setStatus("Please enter a message before sending.", false);
-        fbMsg.focus();
-        return;
-      }
-
-      setStatus("Sending…", true);
-
-      try {
-        // Honeypot check
-        const honeypot = [...fbForm.elements].find(el => el.name === "_gotcha");
-        if (honeypot && honeypot.value) return; // silently drop bots
-
-        const payload = {
-          message,
-          email: email || undefined,
-          page: location.href,
-          ua: navigator.userAgent
-        };
-
-        const res = await fetch(FORMSPREE_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify(payload)
-        });
-
-        if (!res.ok) {
-          const txt = await res.text();
-          throw new Error(`HTTP ${res.status} ${txt}`.slice(0, 240));
-        }
-
-        fbMsg.value = "";
-        setStatus("Thank you — feedback sent.", true);
-      } catch (err) {
-        setStatus("Could not send. Please try again or email directly.", false);
-        console.error(err);
-      }
-    }
-
-    // Init
-    renderTabs();
-    activateTab(0);
-  </script>
 </body>
 </html>
