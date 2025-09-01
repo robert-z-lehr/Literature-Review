@@ -52,6 +52,17 @@
       color: var(--accent);
     }
     header p { margin: 4px 0 8px 0; color: var(--muted); }
+    
+    /* Site menu */
+    .site-nav {
+      display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+      margin: 8px 0 4px 0;
+    }
+    .site-nav a {
+      padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px;
+      text-decoration: none; background: #fff; color: var(--link);
+    }
+    .site-nav a:hover { background: var(--tab-active); text-decoration: none; }
 
     /* Top row: repo link + feedback form aligned */
     .header-row {
